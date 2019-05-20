@@ -1,0 +1,184 @@
+body {
+  font-family: "Raleway", sans-serif; //Google fontsista saatu "Raleway" fontti
+  margin-top: 126px;
+}
+
+//tekstin animointi SASSia hyödyntäen alkaa
+
+$elements: 5;
+$duration: 3s;
+
+.flip {
+  text-align: center;
+  margin: 3%;
+}
+
+.lead {
+  font-size: 2em;
+}
+
+.lead,
+.tail {
+  display: inline-block;
+  padding-left: 1%;
+  vertical-align: top;
+  font-size: 1.8em;
+}
+
+.tail p {
+  position: absolute;
+  animation: flip $elements * $duration infinite ease;
+}
+
+@for $index from 1 through $elements {
+  .tail p:nth-child(#{$index}) {
+    animation-delay: #{(0 - ($index - 1)) * $duration};
+  }
+}
+
+@keyframes flip {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  #{100% / $elements / 2} {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  #{100% / $elements} {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+//tekstin animointi SASSia hyödyntäen loppuu
+
+//Osaaminen osion tyylimäärittelyt alkaa
+
+.skills {
+  text-align: center;
+  padding: 1%;
+  padding-top: 3%;
+  margin: 1%;
+  font-size: 3em;
+}
+
+.skill-header {
+  padding: 4%;
+  text-align: center;
+  font-size: 2em;
+}
+
+.skill-par {
+  padding: 4%;
+  text-align: center;
+  text-align: justify;
+}
+
+.back-back {
+  padding-top: 25px;
+  background-color: #ebebeb;
+}
+
+//Osaaminen osion tyylimäärittelyt loppuu
+
+//Bootstrap karusellin tyylimäärittelyt alkaa
+
+.card-heading {
+  font-size: 4.5em;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.card-par {
+  font-size: 1.7em;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+//Bootstrap karusellin tyylimäärittelyt loppuu
+
+//Bootstrap contact formin tyylimäärittelyt alkaa
+
+.contact-form {
+  background: #fff;
+  margin-top: 3%;
+  width: 70%;
+}
+.contact-form .form-control {
+  border-radius: 1rem;
+}
+.contact-image {
+  text-align: center;
+}
+.contact-image img {
+  border-radius: 6rem;
+  width: 11%;
+  margin-top: -3%;
+  transform: rotate(29deg);
+}
+.contact-form form {
+  padding: 14%;
+}
+.contact-form form .row {
+  margin-bottom: -7%;
+}
+.contact-form h3 {
+  margin-bottom: 8%;
+  margin-top: -10%;
+  text-align: center;
+  color: #0062cc;
+}
+.contact-form .btnContact {
+  width: 50%;
+  border: none;
+  border-radius: 1rem;
+  padding: 1.5%;
+  background: #0062cc;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition-duration: 0.25s;
+}
+
+.btnContact:hover {
+  background-color: steelblue;
+}
+
+//Bootstrap contact formin tyylimäärittelyt loppuu
+
+//footer
+.footer {
+  text-align: center;
+  font-family: monospace;
+  font-size: 1.15em;
+}
+
+//Media breakpointeja responsiivisuuden parantamiseksi
+
+@media only screen and (max-width: 991px) {
+  .lead,
+  .tail {
+    display: none;
+  }
+  .card-heading {
+    font-size: 3.2em;
+  }
+  .card-par {
+    font-size: 1.2em;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .card-heading {
+    font-size: 2.2em;
+  }
+  .card-par {
+    font-size: 1em;
+  }
+  .contact-image {
+    display: none;
+  }
+}
